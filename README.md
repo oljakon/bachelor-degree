@@ -1,2 +1,2 @@
 # bachelor-degree
-BMSTU Bachelor degree (2021)
+BMSTU Bachelor degree (2020-2021)
