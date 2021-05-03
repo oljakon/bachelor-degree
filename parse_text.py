@@ -38,7 +38,7 @@ def split_text(filepath: str, min_char: int = 10) -> List[List]:
     return list(lemmatized_text)
 
 
-def lemmatize(sentence, morph):
+def lemmatize(sentence: str, morph: MorphAnalyzer) -> List:
     tokens = tokenize.word_tokenize(sentence)
     lemmas = []
     for token in tokens:
