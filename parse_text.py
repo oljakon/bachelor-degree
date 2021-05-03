@@ -1,10 +1,9 @@
 from typing import List
 from nltk import tokenize
 import string
-from pymorphy2 import MorphAnalyzer
 
 
-def split_text(filepath: str, min_char: int = 10) -> List[List]:
+def split_text(filepath: str, morph, min_char: int = 10) -> List[List]:
     with open(filepath, 'r', encoding='utf8') as file:
         text = file.read().replace('\n', '. ')
         text = text.replace('.”', '”.').replace('."', '".').replace('?”', '”?').replace('!”', '”!')
@@ -27,8 +26,6 @@ def split_text(filepath: str, min_char: int = 10) -> List[List]:
 
         normed_text.append(sentence)
 
-    morph = MorphAnalyzer()
-
     lemmatized_text = []
 
     for sent in normed_text:
@@ -38,7 +35,7 @@ def split_text(filepath: str, min_char: int = 10) -> List[List]:
     return list(lemmatized_text)
 
 
-def lemmatize(sentence: str, morph: MorphAnalyzer) -> List:
+def lemmatize(sentence: str, morph) -> List:
     tokens = tokenize.word_tokenize(sentence)
     lemmas = []
     for token in tokens:
