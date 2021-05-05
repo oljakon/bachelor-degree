@@ -3,7 +3,7 @@ from nltk import tokenize
 import string
 
 
-def split_text(filepath: str, morph, min_char: int = 10) -> List[List]:
+def split_text(filepath: str, morph, min_char: int = 10) -> List[str]:
     with open(filepath, 'r', encoding='utf8') as file:
         text = file.read().replace('\n', '. ')
         text = text.replace('.”', '”.').replace('."', '".').replace('?”', '”?').replace('!”', '”!')
@@ -26,20 +26,17 @@ def split_text(filepath: str, morph, min_char: int = 10) -> List[List]:
 
         normed_text.append(sentence)
 
+    return list(normed_text)
+
+
+def lemmatize(text: List[str], morph) -> List[List]:
     lemmatized_text = []
+    for sentence in text:
+        tokens = tokenize.word_tokenize(sentence)
+        lemmas = []
+        for token in tokens:
+            lemma = morph.normal_forms(token)[0]
+            lemmas.append(lemma)
+        lemmatized_text.append(lemmas)
 
-    for sent in normed_text:
-        lemmatized_sentence = lemmatize(sent, morph)
-        lemmatized_text.append(lemmatized_sentence)
-
-    return list(lemmatized_text)
-
-
-def lemmatize(sentence: str, morph) -> List:
-    tokens = tokenize.word_tokenize(sentence)
-    lemmas = []
-    for token in tokens:
-        lemma = morph.normal_forms(token)[0]
-        lemmas.append(lemma)
-
-    return lemmas
+    return lemmatized_text
