@@ -41,3 +41,25 @@ def lemmatize(text: List[str], morph) -> List[str]:
         lemmatized_text.append(lemmas)
 
     return lemmatized_text
+
+
+def lemmatize_sentence(sentence: str, morph) -> str:
+    lemmas_sentence = ''
+    tokens = tokenize.word_tokenize(sentence)
+    for token in tokens:
+        lemma = morph.normal_forms(token)[0]
+        lemmas_sentence += lemma + ' '
+    lemmas_sentence = lemmas_sentence.rstrip()
+
+    return lemmas_sentence
+
+
+def get_pos_sentence(sentence: str, morph) -> str:
+    pos_sentence = ''
+    tokens = tokenize.word_tokenize(sentence)
+    for token in tokens:
+        pos = morph.parse(token)[0].tag.POS
+        pos_sentence += str(pos) + ' '
+    pos_sentence = pos_sentence.rstrip()
+
+    return pos_sentence
