@@ -3,7 +3,7 @@ from nltk import tokenize
 import string
 
 
-def split_text(filepath: str, min_char: int = 10) -> List[str]:
+def split_text(filepath: str, min_char: int = 20) -> List[str]:
     with open(filepath, 'r', encoding='utf8') as file:
         text = file.read().replace('\n', '. ')
         text = text.replace('.”', '”.').replace('."', '".').replace('?”', '”?').replace('!”', '”!')

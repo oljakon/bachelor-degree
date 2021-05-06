@@ -30,18 +30,6 @@ turgenev = []
 for path in glob.glob('./prose/Gorky/*.txt'):
     turgenev += split_text(path)
 
-# ex = []
-# for path in glob.glob('./prose/example/*.txt'):
-#     ex += split_text(path, morph)
-#
-
-text_dict = {'Chekhov': chekhov, 'Dostoevsky': dostoevsky, 'Tolstoy': tolstoy, 'Gogol': gogol, 'Gorky': gorky,
-             'Turgenev': turgenev}
-
-for key in text_dict.keys():
-    print(key, ':', len(text_dict[key]), ' sentences')
-
-
 np.random.seed(1)
 
 max_len = 10000
@@ -65,8 +53,5 @@ combined, labels = zip(*zipped)
 author_dataset = pd.DataFrame()
 author_dataset['text'] = combined
 author_dataset['author'] = labels
-
-print(author_dataset.head())
-print(author_dataset.tail())
 
 author_dataset.to_csv('author_dataset.csv', index=False)
