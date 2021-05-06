@@ -2,9 +2,9 @@ import glob
 import random
 import numpy as np
 import pandas as pd
+from pymorphy2 import MorphAnalyzer
 
-from parse_text import split_text
-
+from parse_text import split_text, lemmatize_sentence, get_pos_sentence
 
 chekhov = []
 for path in glob.glob('./prose/Chekhov/*.txt'):
@@ -55,3 +55,17 @@ author_dataset['text'] = combined
 author_dataset['author'] = labels
 
 author_dataset.to_csv('author_dataset.csv', index=False)
+
+morph = MorphAnalyzer()
+
+pos_text = []
+for sent in combined:
+    sent = lemmatize_sentence(sent, morph)
+    sent = get_pos_sentence(sent, morph)
+    pos_text.append(sent)
+
+author_pos_dataset = pd.DataFrame()
+author_pos_dataset['text'] = pos_text
+author_pos_dataset['author'] = labels
+
+author_pos_dataset.to_csv('author_pos_dataset.csv', index=False)
