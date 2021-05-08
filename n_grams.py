@@ -1,8 +1,5 @@
 from typing import List
 from nltk import tokenize
-import numpy as np
-from keras.preprocessing.text import one_hot
-from collections import Counter
 
 
 def generate_n_grams(text: List[str], n: int) -> List[List[List]]:
