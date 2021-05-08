@@ -32,14 +32,14 @@ for path in glob.glob('./prose/Gorky/*.txt'):
     turgenev += split_text(path)
 
 
-corpus_train = dict.fromkeys(['chekhov', 'dostoevsky', 'tolstoy', 'gogol', 'gorky', 'turgenev'])
+corpus = dict.fromkeys(['chekhov', 'dostoevsky', 'tolstoy', 'gogol', 'gorky', 'turgenev'])
 
-corpus_train['chekhov'] = chekhov
-corpus_train['dostoevsky'] = dostoevsky
-corpus_train['tolstoy'] = tolstoy
-corpus_train['gogol'] = gogol
-corpus_train['gorky'] = gorky
-corpus_train['turgenev'] = turgenev
+corpus['chekhov'] = chekhov
+corpus['dostoevsky'] = dostoevsky
+corpus['tolstoy'] = tolstoy
+corpus['gogol'] = gogol
+corpus['gorky'] = gorky
+corpus['turgenev'] = turgenev
 
 
 # np.random.seed(1)
