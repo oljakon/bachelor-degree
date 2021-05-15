@@ -69,3 +69,13 @@ def get_pos_sentence(sentence: str, morph) -> str:
     pos_sentence = pos_sentence.rstrip()
 
     return pos_sentence
+
+
+def get_pos_n_grams_string(n_grams: List[str]) -> str:
+    pos_sentence = ''
+    for n_gram in n_grams:
+        pos_sentence += n_gram + ' '
+
+    pos_sentence = pos_sentence.rstrip()
+
+    return pos_sentence
