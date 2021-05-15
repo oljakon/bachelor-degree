@@ -10,12 +10,10 @@ def read_text_from_file(filepath: str) -> str:
     return text
 
 
-def split_text(filepath: str, min_char: int = 20) -> List[str]:
-    with open(filepath, 'r', encoding='utf8') as file:
-        text = file.read().replace('\n', '. ')
-        text = text.replace('.”', '”.').replace('."', '".').replace('?”', '”?').replace('!”', '”!')
-        text = text.replace('--', ' ').replace('. . .', '').replace('_', '')
-        text = text.replace('\xa0', '')
+def split_text(text: str, min_char: int = 20) -> List[str]:
+    text = text.replace('.”', '”.').replace('."', '".').replace('?”', '”?').replace('!”', '”!')
+    text = text.replace('--', ' ').replace('. . .', '').replace('_', '')
+    text = text.replace('\xa0', '')
 
     sentences = tokenize.sent_tokenize(text)
     sentences = [sentence for sentence in sentences if len(sentence) >= min_char]
