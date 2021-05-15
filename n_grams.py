@@ -25,3 +25,16 @@ def generate_pos_n_grams(n_grams_array: List[List[List]], morph) -> List[str]:
             pos_array.append(n_pos_array)
 
     return pos_array
+
+
+def generate_pos_unigrams_from_n_grams(n_grams_array: List[List[List]], morph) -> List[str]:
+    pos_array = []
+    for n_grams in n_grams_array:
+        for n_gram in n_grams:
+            n_pos_array = ''
+            for token in n_gram:
+                pos = morph.parse(token)[0].tag.POS
+                n_pos_array += str(pos) + ''
+            pos_array.append(n_pos_array)
+
+    return pos_array
