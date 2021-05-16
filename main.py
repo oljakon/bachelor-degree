@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -15,16 +16,34 @@ def main():
 
     # Convert a collection of text documents to a matrix of token counts
     vect = CountVectorizer()
-    x_train = vect.fit_transform(pos_text_train)
+    x_train_count = vect.fit_transform(pos_text_train)
+    x_test_count = vect.transform(pos_text_test)
 
-    #print(vect.vocabulary_)
-    #print(vect.get_feature_names())
-    #print(x_train.toarray())
+    # print(vect.vocabulary_)
+    # print(vect.get_feature_names())
+    # print(x_train_count.toarray())
 
     tfidf_vect = TfidfVectorizer()
     x_train = tfidf_vect.fit_transform(pos_text_train)
+    x_test = tfidf_vect.transform(pos_text_test)
 
-    #print(x_train.toarray())
+    # print(x_train.toarray())
+
+    clf_mnb = MultinomialNB()
+    clf_mnb.fit(x_train, pos_author_train)
+    y_pred = clf_mnb.predict(x_test)
+    mnb_score = accuracy_score(pos_author_test, y_pred)
+
+    training_score = clf_mnb.score(x_train, pos_author_train)
+    test_score = clf_mnb.score(x_test, pos_author_test)
+
+    clf_mnb_count = MultinomialNB()
+    clf_mnb_count.fit(x_train_count, pos_author_train)
+    y_pred_count = clf_mnb.predict(x_test_count)
+    mnb_score_count = accuracy_score(pos_author_test, y_pred_count)
+
+    training_score_count = clf_mnb_count.score(x_train_count, pos_author_train)
+    test_score_count = clf_mnb_count.score(x_test_count, pos_author_test)
 
     # tfidf_transformer = TfidfTransformer()
     # x_train_tfidf = tfidf_transformer.fit_transform(x_train_counts)
