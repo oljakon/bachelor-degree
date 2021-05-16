@@ -29,7 +29,7 @@ def main():
 
     # print(x_train.toarray())
 
-    clf_mnb = MultinomialNB()
+    clf_mnb = MultinomialNB(alpha=0.0001, fit_prior=False)
     clf_mnb.fit(x_train, pos_author_train)
     y_pred = clf_mnb.predict(x_test)
     mnb_score = accuracy_score(pos_author_test, y_pred)
@@ -49,7 +49,7 @@ def main():
 
     print(f'CountVectorizer:\nTraining score: {training_score_count}, \nTest score: {test_score_count}')
 
-    # for doc, category in zip(pos_text_test, predicted):
+    # for doc, category in zip(pos_author_test, y_pred):
     #     print('%r => %s' % (doc, category))
 
 
