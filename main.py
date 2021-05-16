@@ -1,42 +1,48 @@
-from pymorphy2 import MorphAnalyzer
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-
-from n_grams import generate_n_grams, generate_pos_n_grams
-from parse_text import split_text, lemmatize
+from sklearn.naive_bayes import MultinomialNB
 
 
 def main():
-    morph = MorphAnalyzer()
+    pos_data = pd.read_csv('author_pos.csv', encoding='utf8')
+    pos_text = list(pos_data['pos'].values)
+    pos_author = list(pos_data['author'].values)
 
-    data = pd.read_csv('author_dataset.csv', encoding='utf8')
-    text = list(data['text'].values)
-    author = list(data['author'].values)
+    pos_text_train, pos_text_test, pos_author_train, pos_author_test = train_test_split(
+        pos_text, pos_author, test_size=0.2, random_state=5
+    )
 
-    text_train, text_test, author_train, author_test = train_test_split(text, author, test_size=0.2, random_state=5)
+    # Convert a collection of text documents to a matrix of token counts
+    vect = CountVectorizer()
+    x_train = vect.fit_transform(pos_text_train)
 
-    parsed_text = split_text('./text1.txt')
-    lemmatized_text = lemmatize(parsed_text, morph)
-    n_grams_array = generate_n_grams(lemmatized_text, 5)
-    pos_n_grams_array = generate_pos_n_grams(n_grams_array, morph)
+    #print(vect.vocabulary_)
+    #print(vect.get_feature_names())
+    #print(x_train.toarray())
 
+    tfidf_vect = TfidfVectorizer()
+    x_train = tfidf_vect.fit_transform(pos_text_train)
+
+    #print(x_train.toarray())
+
+    # tfidf_transformer = TfidfTransformer()
+    # x_train_tfidf = tfidf_transformer.fit_transform(x_train_counts)
     #
-    # parsed_text2 = split_text('./text2.txt', morph)
-    # lemmatized_text2 = lemmatize(parsed_text2, morph)
-    # n_grams_array2 = generate_n_grams(lemmatized_text2, 5)
-    # pos_n_grams_array2 = generate_pos_n_grams(n_grams_array2, morph)
+    # model = MultinomialNB()
+    # model_train = model.fit(x_train_tfidf, pos_author_train)
+    # training_score = model.score(x_train_tfidf, pos_author_train)
     #
-    # corpus = [pos_n_grams_array, pos_n_grams_array2]
-    # print(corpus)
-    # vectorizer = TfidfVectorizer()
-    # X = vectorizer.fit_transform(corpus)
-    # print(X.shape)
-    # vectorizer = CountVectorizer(ngram_range=(5, 5))
-    # vectorizer.fit(pos_n_grams_array)
-    # print(vectorizer.vocabulary_)
-    # print(vectorizer.transform(pos_n_grams_array).toarray())
+    # x_test_counts = count_vect.transform(pos_text_test)
+    # x_test_tfidf = tfidf_transformer.transform(x_test_counts)
+    #
+    # predicted = model.predict(x_test_tfidf)
+    # test_score = model.score(x_test_tfidf, pos_author_test)
+    #
+    # print(f'Training score: {training_score}, \nTest score: {test_score}')
+
+    # for doc, category in zip(pos_text_test, predicted):
+    #     print('%r => %s' % (doc, category))
 
 
 if __name__ == '__main__':
