@@ -37,6 +37,8 @@ def main():
     training_score = clf_mnb.score(x_train, pos_author_train)
     test_score = clf_mnb.score(x_test, pos_author_test)
 
+    print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+
     clf_mnb_count = MultinomialNB()
     clf_mnb_count.fit(x_train_count, pos_author_train)
     y_pred_count = clf_mnb.predict(x_test_count)
@@ -45,20 +47,7 @@ def main():
     training_score_count = clf_mnb_count.score(x_train_count, pos_author_train)
     test_score_count = clf_mnb_count.score(x_test_count, pos_author_test)
 
-    # tfidf_transformer = TfidfTransformer()
-    # x_train_tfidf = tfidf_transformer.fit_transform(x_train_counts)
-    #
-    # model = MultinomialNB()
-    # model_train = model.fit(x_train_tfidf, pos_author_train)
-    # training_score = model.score(x_train_tfidf, pos_author_train)
-    #
-    # x_test_counts = count_vect.transform(pos_text_test)
-    # x_test_tfidf = tfidf_transformer.transform(x_test_counts)
-    #
-    # predicted = model.predict(x_test_tfidf)
-    # test_score = model.score(x_test_tfidf, pos_author_test)
-    #
-    # print(f'Training score: {training_score}, \nTest score: {test_score}')
+    print(f'CountVectorizer:\nTraining score: {training_score_count}, \nTest score: {test_score_count}')
 
     # for doc, category in zip(pos_text_test, predicted):
     #     print('%r => %s' % (doc, category))
