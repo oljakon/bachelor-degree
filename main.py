@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 
 
 def main():
@@ -63,15 +64,30 @@ def main():
     #
     # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
-    clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False,
-                  tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
-                  decision_function_shape='ovr', break_ties=False, random_state=None)
-    clf_svc.fit(x_train, pos_author_train)
-    y_pred = clf_svc.predict(x_test)
+    # clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False,
+    #               tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
+    #               decision_function_shape='ovr', break_ties=False, random_state=None)
+    # clf_svc.fit(x_train, pos_author_train)
+    # y_pred = clf_svc.predict(x_test)
+    # mnb_score = accuracy_score(pos_author_test, y_pred)
+    #
+    # training_score = clf_svc.score(x_train, pos_author_train)
+    # test_score = clf_svc.score(x_test, pos_author_test)
+    #
+    # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+
+    clf_rf = RandomForestClassifier(n_estimators=1000, criterion='gini', max_depth=None, min_samples_split=2,
+                                    min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto',
+                                    max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None,
+                                    bootstrap=True, oob_score=False, n_jobs=None, random_state=None, verbose=0,
+                                    warm_start=False, class_weight=None, ccp_alpha=0.0, max_samples=None)
+
+    clf_rf.fit(x_train, pos_author_train)
+    y_pred = clf_rf.predict(x_test)
     mnb_score = accuracy_score(pos_author_test, y_pred)
 
-    training_score = clf_svc.score(x_train, pos_author_train)
-    test_score = clf_svc.score(x_test, pos_author_test)
+    training_score = clf_rf.score(x_train, pos_author_train)
+    test_score = clf_rf.score(x_test, pos_author_test)
 
     print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
