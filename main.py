@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 
 
 def main():
@@ -24,6 +25,7 @@ def main():
     # print(vect.get_feature_names())
     # print(x_train_count.toarray())
 
+    # sublinear_tf=True
     tfidf_vect = TfidfVectorizer()
     x_train = tfidf_vect.fit_transform(pos_text_train)
     x_test = tfidf_vect.transform(pos_text_test)
@@ -50,14 +52,26 @@ def main():
     #
     # print(f'CountVectorizer:\nTraining score: {training_score_count}, \nTest score: {test_score_count}')
 
-    clf_neigh = KNeighborsClassifier(n_neighbors=1, weights='uniform', algorithm='auto', leaf_size=30, p=2,
-                                     metric='minkowski', metric_params=None, n_jobs=None)
-    clf_neigh.fit(x_train, pos_author_train)
-    y_pred = clf_neigh.predict(x_test)
+    # clf_svc = KNeighborsClassifier(n_neighbors=1, weights='uniform', algorithm='auto', leaf_size=30, p=2,
+    #                                  metric='minkowski', metric_params=None, n_jobs=None)
+    # clf_svc.fit(x_train, pos_author_train)
+    # y_pred = clf_svc.predict(x_test)
+    # mnb_score = accuracy_score(pos_author_test, y_pred)
+    #
+    # training_score = clf_svc.score(x_train, pos_author_train)
+    # test_score = clf_svc.score(x_test, pos_author_test)
+    #
+    # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+
+    clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False,
+                  tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
+                  decision_function_shape='ovr', break_ties=False, random_state=None)
+    clf_svc.fit(x_train, pos_author_train)
+    y_pred = clf_svc.predict(x_test)
     mnb_score = accuracy_score(pos_author_test, y_pred)
 
-    training_score = clf_neigh.score(x_train, pos_author_train)
-    test_score = clf_neigh.score(x_test, pos_author_test)
+    training_score = clf_svc.score(x_train, pos_author_train)
+    test_score = clf_svc.score(x_test, pos_author_test)
 
     print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
