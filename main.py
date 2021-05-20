@@ -6,10 +6,11 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 
 def main():
-    pos_data = pd.read_csv('author_pos_5.csv', encoding='utf8')
+    pos_data = pd.read_csv('author_pos_3_33.csv', encoding='utf8')
     pos_text = list(pos_data['pos'].values)
     pos_author = list(pos_data['author'].values)
 
@@ -31,8 +32,8 @@ def main():
     x_train = tfidf_vect.fit_transform(pos_text_train)
     x_test = tfidf_vect.transform(pos_text_test)
 
-    # print(x_train.toarray())
-
+    a = x_train.toarray()
+    #
     # clf_mnb = MultinomialNB(alpha=0.0001, fit_prior=False)
     # clf_mnb.fit(x_train, pos_author_train)
     # y_pred = clf_mnb.predict(x_test)
@@ -76,18 +77,28 @@ def main():
     #
     # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
-    clf_rf = RandomForestClassifier(n_estimators=1000, criterion='gini', max_depth=None, min_samples_split=2,
-                                    min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto',
-                                    max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None,
-                                    bootstrap=True, oob_score=False, n_jobs=None, random_state=None, verbose=0,
-                                    warm_start=False, class_weight=None, ccp_alpha=0.0, max_samples=None)
+    # clf_rf = RandomForestClassifier(n_estimators=1000, criterion='gini', max_depth=None, min_samples_split=2,
+    #                                 min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto',
+    #                                 max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None,
+    #                                 bootstrap=True, oob_score=False, n_jobs=None, random_state=None, verbose=0,
+    #                                 warm_start=False, class_weight=None, ccp_alpha=0.0, max_samples=None)
+    #
+    # clf_rf.fit(x_train, pos_author_train)
+    # y_pred = clf_rf.predict(x_test)
+    # mnb_score = accuracy_score(pos_author_test, y_pred)
+    #
+    # training_score = clf_rf.score(x_train, pos_author_train)
+    # test_score = clf_rf.score(x_test, pos_author_test)
+    #
+    # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
-    clf_rf.fit(x_train, pos_author_train)
-    y_pred = clf_rf.predict(x_test)
+    clf_lr = LogisticRegression(random_state=0)
+    clf_lr.fit(x_train, pos_author_train)
+    y_pred = clf_lr.predict(x_test)
     mnb_score = accuracy_score(pos_author_test, y_pred)
 
-    training_score = clf_rf.score(x_train, pos_author_train)
-    test_score = clf_rf.score(x_test, pos_author_test)
+    training_score = clf_lr.score(x_train, pos_author_train)
+    test_score = clf_lr.score(x_test, pos_author_test)
 
     print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
