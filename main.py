@@ -65,17 +65,17 @@ def main():
     #
     # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
-    # clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False,
-    #               tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
-    #               decision_function_shape='ovr', break_ties=False, random_state=None)
-    # clf_svc.fit(x_train, pos_author_train)
-    # y_pred = clf_svc.predict(x_test)
-    # mnb_score = accuracy_score(pos_author_test, y_pred)
-    #
-    # training_score = clf_svc.score(x_train, pos_author_train)
-    # test_score = clf_svc.score(x_test, pos_author_test)
-    #
-    # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+    clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False,
+                  tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
+                  decision_function_shape='ovr', break_ties=False, random_state=None)
+    clf_svc.fit(x_train, pos_author_train)
+    y_pred = clf_svc.predict(x_test)
+    mnb_score = accuracy_score(pos_author_test, y_pred)
+
+    training_score = clf_svc.score(x_train, pos_author_train)
+    test_score = clf_svc.score(x_test, pos_author_test)
+
+    print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
     # clf_rf = RandomForestClassifier(n_estimators=1000, criterion='gini', max_depth=None, min_samples_split=2,
     #                                 min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto',
@@ -92,15 +92,15 @@ def main():
     #
     # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
-    clf_lr = LogisticRegression(random_state=0)
-    clf_lr.fit(x_train, pos_author_train)
-    y_pred = clf_lr.predict(x_test)
-    mnb_score = accuracy_score(pos_author_test, y_pred)
-
-    training_score = clf_lr.score(x_train, pos_author_train)
-    test_score = clf_lr.score(x_test, pos_author_test)
-
-    print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+    # clf_lr = LogisticRegression(random_state=0)
+    # clf_lr.fit(x_train, pos_author_train)
+    # y_pred = clf_lr.predict(x_test)
+    # mnb_score = accuracy_score(pos_author_test, y_pred)
+    #
+    # training_score = clf_lr.score(x_train, pos_author_train)
+    # test_score = clf_lr.score(x_test, pos_author_test)
+    #
+    # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
     for doc, category in zip(pos_author_test, y_pred):
         print('%r => %s' % (doc, category))
