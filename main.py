@@ -10,7 +10,7 @@ from sklearn.linear_model import LogisticRegression
 
 
 def main():
-    pos_data = pd.read_csv('author_pos_3_30.csv', encoding='utf8')
+    pos_data = pd.read_csv('author_pos_2_30.csv', encoding='utf8')
     pos_text = list(pos_data['pos'].values)
     pos_author = list(pos_data['author'].values)
 
