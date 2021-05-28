@@ -1,5 +1,6 @@
 from typing import List
 from nltk import tokenize
+from nltk.corpus import stopwords
 import string
 
 
@@ -58,6 +59,21 @@ def lemmatize_sentence(sentence: str, morph) -> str:
     lemmas_sentence = lemmas_sentence.rstrip()
 
     return lemmas_sentence
+
+
+def lemmatize_remove_stopwords(text: List[str], morph) -> List[str]:
+    lemmatized_text = []
+    for sentence in text:
+        tokens = tokenize.word_tokenize(sentence)
+        lemmas = ''
+        for token in tokens:
+            lemma = morph.normal_forms(token)[0]
+            if lemma not in stopwords.words('russian'):
+                lemmas += lemma + ' '
+        lemmas = lemmas.rstrip()
+        lemmatized_text.append(lemmas)
+
+    return lemmatized_text
 
 
 def get_pos_sentence(sentence: str, morph) -> str:
