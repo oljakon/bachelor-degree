@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 from pymorphy2 import MorphAnalyzer
 
-from n_grams import generate_n_grams, generate_pos_unigrams_from_n_grams
-from parse_text import read_text_from_file, split_text, lemmatize, get_pos_n_grams_string
+from n_grams import generate_n_grams, generate_pos_unigrams_from_n_grams, generate_verb_unigrams_from_n_grams
+from parse_text import read_text_from_file, split_text, lemmatize, get_pos_n_grams_string, lemmatize_remove_stopwords
 
 chekhov = []
 for path in glob.glob('./prose/Chekhov/*.txt'):
@@ -50,8 +50,9 @@ chekhov = chekhov[:max_len]
 dostoevsky = dostoevsky[:max_len]
 tolstoy = tolstoy[:max_len]
 gorky = gorky[:max_len]
+turgenev = turgenev[:max_len]
 
-names = [chekhov, dostoevsky, tolstoy, gorky]
+names = [chekhov, dostoevsky, tolstoy, gorky, turgenev]
 
 combined = []
 for name in names:
@@ -67,11 +68,11 @@ zipped = list(zip(combined, labels))
 random.shuffle(zipped)
 combined, labels = zip(*zipped)
 
-# author_text = pd.DataFrame()
-# author_text['text'] = combined
-# author_text['author'] = labels
-#
-# author_text.to_csv('author_text_30.csv', index=False)
+author_text = pd.DataFrame()
+author_text['text'] = combined
+author_text['author'] = labels
+
+author_text.to_csv('author_text_30.csv', index=False)
 
 morph = MorphAnalyzer()
 
@@ -138,4 +139,4 @@ for text in combined:
 author_pos_6 = pd.DataFrame()
 author_pos_6['pos'] = pos_6_grams_dataset
 author_pos_6['author'] = labels
-author_pos_6.to_csv('author_pos_6_30.csv', index=False)
+# author_pos_6.to_csv('author_pos_6_30.csv', index=False)
