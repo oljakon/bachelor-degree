@@ -103,7 +103,7 @@ for text in combined:
 author_pos_3 = pd.DataFrame()
 author_pos_3['pos'] = pos_3_grams_dataset
 author_pos_3['author'] = labels
-author_pos_3.to_csv('datasets/pos_3_ыещз_30.csv', index=False)
+author_pos_3.to_csv('datasets/pos_3_stop_30.csv', index=False)
 
 print('3 finished')
 
