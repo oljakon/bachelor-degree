@@ -147,12 +147,12 @@ def experiment2():
     plt.grid()
     plt.show()
 
-    line1, = plt.plot(n, f, label='Выборка со стоп-словами')
-    line2, = plt.plot(n, f_stop, label='Выборка без стоп-слов')
+    line5, = plt.plot(n, f, label='Выборка со стоп-словами')
+    line6, = plt.plot(n, f_stop, label='Выборка без стоп-слов')
     plt.plot(n, f)
     plt.xlabel('N')
     plt.ylabel('F-мера')
-    plt.legend(handles=[line1, line2, line3, line4])
+    plt.legend(handles=[line5, line6])
     plt.grid()
     plt.show()
 
@@ -246,18 +246,18 @@ def experiment3():
     plt.grid()
     plt.show()
 
-    line1, = plt.plot(n, f, label='Выборка с инфинитивами')
-    line2, = plt.plot(n, f_verb, label='Выборка без инфинитивов')
+    line5, = plt.plot(n, f, label='Выборка с инфинитивами')
+    line6, = plt.plot(n, f_verb, label='Выборка без инфинитивов')
     plt.plot(n, f)
     plt.xlabel('N')
     plt.ylabel('F-мера')
-    plt.legend(handles=[line1, line2, line3, line4])
+    plt.legend(handles=[line5, line6])
     plt.grid()
     plt.show()
 
 
 def main():
-    experiment3()
+    experiment2()
 
 
 if __name__ == '__main__':
