@@ -15,6 +15,10 @@ from sklearn.metrics import f1_score
 def get_train_data(csv_filename: str):
     pos_data = pd.read_csv(csv_filename, encoding='utf8')
     pos_text = list(pos_data['pos'].values)
+    # su = 0
+    # for i in pos_text:
+    #     su += len(i)
+    # print(su)
     pos_author = list(pos_data['author'].values)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = train_test_split(
@@ -24,13 +28,13 @@ def get_train_data(csv_filename: str):
     return pos_text_train, pos_text_test, pos_author_train, pos_author_test
 
 
-def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test):
+def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, kernel='rbf'):
     # sublinear_tf=True
     tfidf_vect = TfidfVectorizer()
     x_train = tfidf_vect.fit_transform(pos_text_train)
     x_test = tfidf_vect.transform(pos_text_test)
 
-    clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=True,
+    clf_svc = SVC(C=2.0, kernel=kernel, degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=True,
                   tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
                   decision_function_shape='ovo', break_ties=False, random_state=None)
     clf_svc.fit(x_train, pos_author_train)
@@ -41,11 +45,10 @@ def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_auth
     training_score = clf_svc.score(x_train, pos_author_train)
     test_score = clf_svc.score(x_test, pos_author_test)
 
-    #print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
-
     f1 = f1_score(pos_author_test, y_pred, average='weighted')
 
-    #print(f'F1_score: {f1}\n')
+    # print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+    # print(f'F1_score: {f1}\n')
 
     # for doc, category in zip(pos_author_test, y_pred):
     #     print('%r => %s' % (doc, category))

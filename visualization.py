@@ -1,5 +1,4 @@
 from matplotlib import pyplot as plt
-from sklearn.svm import SVC
 
 from classification import get_train_data, svm_classification
 
