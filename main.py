@@ -21,7 +21,7 @@ from parse_text import read_text_from_file, split_text, lemmatize, get_pos_n_gra
 
 def main():
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    train_score, test_score, f1 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
 
 
 if __name__ == '__main__':

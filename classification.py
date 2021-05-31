@@ -1,4 +1,5 @@
 import pandas as pd
+from matplotlib import pyplot as plt
 from pymorphy2 import MorphAnalyzer
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
@@ -8,6 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import f1_score
 
 
 def get_train_data(csv_filename: str):
@@ -28,22 +30,27 @@ def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_auth
     x_train = tfidf_vect.fit_transform(pos_text_train)
     x_test = tfidf_vect.transform(pos_text_test)
 
-    clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=False,
+    clf_svc = SVC(C=2.0, kernel='rbf', degree=3, gamma='scale', coef0=0.0, shrinking=True, probability=True,
                   tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
                   decision_function_shape='ovo', break_ties=False, random_state=None)
     clf_svc.fit(x_train, pos_author_train)
+    # print(clf_svc.predict_proba(x_test))
     y_pred = clf_svc.predict(x_test)
     mnb_score = accuracy_score(pos_author_test, y_pred)
 
     training_score = clf_svc.score(x_train, pos_author_train)
     test_score = clf_svc.score(x_test, pos_author_test)
 
-    print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
+    #print(f'TfIdfVectorizer:\nTraining score: {training_score}, \nTest score: {test_score}\n')
 
-    for doc, category in zip(pos_author_test, y_pred):
-        print('%r => %s' % (doc, category))
+    f1 = f1_score(pos_author_test, y_pred, average='weighted')
 
+    #print(f'F1_score: {f1}\n')
 
+    # for doc, category in zip(pos_author_test, y_pred):
+    #     print('%r => %s' % (doc, category))
+
+    return training_score, test_score, f1
 
     # Convert a collection of text documents to a matrix of token counts
     # vect = CountVectorizer()
