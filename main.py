@@ -1,6 +1,6 @@
 from PyQt5 import uic, QtCore
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 import sys
 from pymorphy2 import MorphAnalyzer
 from classification import get_train_data, svm_classification
@@ -26,6 +26,8 @@ author_table = {
     'Dostoevsky': 'Достоевский'
 }
 
+global clf_svc, tfidf_vect
+
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -34,12 +36,16 @@ class MainWindow(QMainWindow):
 
     @pyqtSlot(name='on_fileSystem_clicked')
     def open_file_system(self):
+        try:
+            clf_svc, tfidf_vect
+        except NameError:
+            QMessageBox.warning(self, 'Ошибка', 'Сначала необходимо\nобучить классификатор!\n')
+            return 0
+
         filename = QFileDialog.getOpenFileName()
         path = filename[0]
         path_array = path.split('/')
         self.name.setText(path_array[-1])
-
-        clf_svc, tfidf_vect = self.classification()
 
         text = read_text_from_file(path)
         split = split_text(text)
@@ -65,7 +71,8 @@ class MainWindow(QMainWindow):
         n_dataset = n_table[n]
 
         pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data(n_dataset)
-        clf_svc, tfidf, train_score, test_score, f_score = svm_classification(
+        global clf_svc, tfidf_vect
+        clf_svc, tfidf_vect, train_score, test_score, f_score = svm_classification(
             pos_text_train,
             pos_text_test,
             pos_author_train,
@@ -74,8 +81,6 @@ class MainWindow(QMainWindow):
         self.trainScore.setText(str(round(100 * train_score)) + '%')
         self.testScore.setText(str(round(100 * test_score)) + '%')
         self.fScore.setText(str(round(100 * f_score)) + '%')
-
-        return clf_svc, tfidf
 
 
 def main():
