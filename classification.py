@@ -1,10 +1,7 @@
 import pandas as pd
-from matplotlib import pyplot as plt
-from pymorphy2 import MorphAnalyzer
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
@@ -15,10 +12,6 @@ from sklearn.metrics import f1_score
 def get_train_data(csv_filename: str):
     pos_data = pd.read_csv(csv_filename, encoding='utf8')
     pos_text = list(pos_data['pos'].values)
-    # su = 0
-    # for i in pos_text:
-    #     su += len(i)
-    # print(su)
     pos_author = list(pos_data['author'].values)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = train_test_split(
@@ -53,7 +46,7 @@ def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_auth
     # for doc, category in zip(pos_author_test, y_pred):
     #     print('%r => %s' % (doc, category))
 
-    return training_score, test_score, f1
+    return clf_svc, tfidf_vect, training_score, test_score, f1
 
     # Convert a collection of text documents to a matrix of token counts
     # vect = CountVectorizer()
