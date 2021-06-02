@@ -34,7 +34,32 @@ dostoevsky = dostoevsky[:max_len]
 tolstoy = tolstoy[:max_len]
 gorky = gorky[:max_len]
 turgenev = turgenev[:max_len]
+
 names = [chekhov, dostoevsky, tolstoy, gorky, turgenev]
+
+# morph = MorphAnalyzer()
+
+# chekhov_n = []
+# n_dict = {}
+# for text in chekhov:
+#     parsed_text = split_text(text)
+#     lemmatized_text = lemmatize(parsed_text, morph)
+#     n_gram_text = generate_n_grams(lemmatized_text, 3)
+#     uni_pos_text = generate_verb_unigrams_from_n_grams(n_gram_text, morph)
+#     pos_n_grams_text = get_pos_n_grams_string(uni_pos_text)
+#     chekhov_n.append(pos_n_grams_text)
+
+# n_string = chekhov_n[0].split(' ')
+# for n_gram in n_string:
+#     if n_gram in n_dict:
+#         n_dict[n_gram] += 1
+#     else:
+#         n_dict.update({n_gram: 1})
+#
+# sorted_tuples = sorted(n_dict.items(), key=lambda item: item[1])
+# print(sorted_tuples)  # [(1, 1), (3, 4), (2, 9)]
+#
+
 
 combined = []
 for name in names:
@@ -58,7 +83,6 @@ author_text.to_csv('datasets/author_text_30.csv', index=False)
 
 morph = MorphAnalyzer()
 
-print('start')
 
 pos_2_grams_dataset = []
 for text in combined:
@@ -73,8 +97,6 @@ author_pos_3['pos'] = pos_2_grams_dataset
 author_pos_3['author'] = labels
 author_pos_3.to_csv('datasets/pos_2_verb_30.csv', index=False)
 
-print('2 finished')
-
 pos_3_grams_dataset = []
 for text in combined:
     parsed_text = split_text(text)
@@ -87,8 +109,6 @@ author_pos_3 = pd.DataFrame()
 author_pos_3['pos'] = pos_3_grams_dataset
 author_pos_3['author'] = labels
 author_pos_3.to_csv('datasets/pos_3_stop_30.csv', index=False)
-
-print('3 finished')
 
 pos_4_grams_dataset = []
 for text in combined:
@@ -103,8 +123,6 @@ author_pos_4['pos'] = pos_4_grams_dataset
 author_pos_4['author'] = labels
 author_pos_4.to_csv('datasets/pos_4_verb_30.csv', index=False)
 
-print('4 finished')
-
 pos_5_grams_dataset = []
 for text in combined:
     parsed_text = split_text(text)
@@ -117,8 +135,6 @@ author_pos_5 = pd.DataFrame()
 author_pos_5['pos'] = pos_5_grams_dataset
 author_pos_5['author'] = labels
 author_pos_5.to_csv('datasets/pos_5_verb_30.csv', index=False)
-
-print('5 finished')
 
 pos_6_grams_dataset = []
 for text in combined:
@@ -133,4 +149,3 @@ author_pos_6['pos'] = pos_6_grams_dataset
 author_pos_6['author'] = labels
 author_pos_6.to_csv('datasets/pos_6_verb_30.csv', index=False)
 
-print('6 finished')
