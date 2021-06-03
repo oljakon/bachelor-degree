@@ -61,8 +61,6 @@ class MainWindow(QMainWindow):
             return 0
 
         path = filename[0]
-        path_array = path.split('/')
-        author_path = path_array[-2]
 
         n = int(self.n.currentText())
 
@@ -77,8 +75,15 @@ class MainWindow(QMainWindow):
 
         pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data(n_dataset)
 
-        pos_text_train.append(pos_n_grams_text)
-        pos_author_train.append(author_path)
+        try:
+            path_array = path.split('/')
+            author_path = path_array[-2]
+            pos_text_train.append(pos_n_grams_text)
+            pos_author_train.append(author_path)
+            val = author_table[author_path]
+        except KeyError:
+            del pos_text_train[-1]
+            del pos_author_train[-1]
 
         tfidf_vect = TfidfVectorizer()
         x_train = tfidf_vect.fit_transform(pos_text_train)
