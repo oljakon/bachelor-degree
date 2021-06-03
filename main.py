@@ -93,13 +93,17 @@ class MainWindow(QMainWindow):
         text_test_tfidf = tfidf_vect.transform(text_test)
         y_pred = clf_svc.predict(text_test_tfidf)
 
+        y_proba = clf_svc.predict_proba(text_test_tfidf)
+
+        proba = '(' + str(round(100 * max(y_proba[0]))) + '%)'
+
         author_pred = author_table[y_pred[0]]
 
         # training_score = clf_svc.score(x_train, pos_author_train)
         # test_score = clf_svc.score(x_test, pos_author_test)
         # for doc, category in zip(pos_author_test, pred):
         #     print('%r => %s' % (doc, category))
-        self.author.setText(author_pred)
+        self.author.setText(author_pred + ' ' + proba)
 
     @pyqtSlot(name='on_classify_clicked')
     def classification(self):
