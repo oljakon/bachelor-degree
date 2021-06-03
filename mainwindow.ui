@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>799</width>
-    <height>393</height>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -141,49 +141,49 @@
        <property name="title">
         <string>Классификация</string>
        </property>
-       <widget class="QWidget" name="verticalLayoutWidget">
+       <widget class="QWidget" name="gridLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>19</x>
-          <y>59</y>
+          <x>20</x>
+          <y>60</y>
           <width>341</width>
           <height>211</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Определить автора:</string>
-           </property>
-          </widget>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="name"/>
          </item>
-         <item>
+         <item row="0" column="0" colspan="2">
           <widget class="QPushButton" name="fileSystem">
            <property name="text">
             <string>Выбрать файл</string>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QLabel" name="label_4">
+         <item row="2" column="0" colspan="2">
+          <widget class="QPushButton" name="findAuthor">
            <property name="text">
-            <string>Название текста:</string>
+            <string>Определить автора</string>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QLineEdit" name="name"/>
-         </item>
-         <item>
+         <item row="3" column="0">
           <widget class="QLabel" name="label_5">
            <property name="text">
             <string>Предполагаемый автор:</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="3" column="1">
           <widget class="QLineEdit" name="author"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Название текста:</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

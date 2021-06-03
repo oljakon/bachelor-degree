@@ -22,7 +22,6 @@ def get_train_data(csv_filename: str):
 
 
 def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, kernel='rbf'):
-    # sublinear_tf=True
     tfidf_vect = TfidfVectorizer()
     x_train = tfidf_vect.fit_transform(pos_text_train)
     x_test = tfidf_vect.transform(pos_text_test)
@@ -31,7 +30,6 @@ def svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_auth
                   tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1,
                   decision_function_shape='ovo', break_ties=False, random_state=None)
     clf_svc.fit(x_train, pos_author_train)
-    # print(clf_svc.predict_proba(x_test))
     y_pred = clf_svc.predict(x_test)
     mnb_score = accuracy_score(pos_author_test, y_pred)
 
