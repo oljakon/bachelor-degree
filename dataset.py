@@ -7,6 +7,7 @@ from pymorphy2 import MorphAnalyzer
 from n_grams import generate_n_grams, generate_pos_unigrams_from_n_grams, generate_verb_unigrams_from_n_grams
 from parse_text import read_text_from_file, split_text, lemmatize, get_pos_n_grams_string, lemmatize_remove_stopwords
 
+
 chekhov = []
 for path in glob.glob('./prose/Chekhov/*.txt'):
     chekhov.append(read_text_from_file(path))
@@ -37,7 +38,7 @@ turgenev = turgenev[:max_len]
 
 names = [chekhov, dostoevsky, tolstoy, gorky, turgenev]
 
-# morph = MorphAnalyzer()
+morph = MorphAnalyzer()
 
 # chekhov_n = []
 # n_dict = {}
@@ -89,18 +90,18 @@ for text in combined:
     parsed_text = split_text(text)
     lemmatized_text = lemmatize(parsed_text, morph)
     n_gram_text = generate_n_grams(lemmatized_text, 2)
-    uni_pos_text = generate_verb_unigrams_from_n_grams(n_gram_text, morph)
+    uni_pos_text = generate_pos_unigrams_from_n_grams(n_gram_text, morph)
     pos_n_grams_text = get_pos_n_grams_string(uni_pos_text)
     pos_2_grams_dataset.append(pos_n_grams_text)
 author_pos_3 = pd.DataFrame()
 author_pos_3['pos'] = pos_2_grams_dataset
 author_pos_3['author'] = labels
-author_pos_3.to_csv('datasets/pos_2_verb_30.csv', index=False)
+author_pos_3.to_csv('datasets/pos_2_30.csv', index=False)
 
 pos_3_grams_dataset = []
 for text in combined:
     parsed_text = split_text(text)
-    lemmatized_text = lemmatize_remove_stopwords(parsed_text, morph)
+    lemmatized_text = lemmatize(parsed_text, morph)
     n_gram_text = generate_n_grams(lemmatized_text, 3)
     uni_pos_text = generate_pos_unigrams_from_n_grams(n_gram_text, morph)
     pos_n_grams_text = get_pos_n_grams_string(uni_pos_text)
@@ -108,44 +109,44 @@ for text in combined:
 author_pos_3 = pd.DataFrame()
 author_pos_3['pos'] = pos_3_grams_dataset
 author_pos_3['author'] = labels
-author_pos_3.to_csv('datasets/pos_3_stop_30.csv', index=False)
+author_pos_3.to_csv('datasets/pos_3_30.csv', index=False)
 
 pos_4_grams_dataset = []
 for text in combined:
     parsed_text = split_text(text)
     lemmatized_text = lemmatize(parsed_text, morph)
     n_gram_text = generate_n_grams(lemmatized_text, 4)
-    uni_pos_text = generate_verb_unigrams_from_n_grams(n_gram_text, morph)
+    uni_pos_text = generate_pos_unigrams_from_n_grams(n_gram_text, morph)
     pos_n_grams_text = get_pos_n_grams_string(uni_pos_text)
     pos_4_grams_dataset.append(pos_n_grams_text)
 author_pos_4 = pd.DataFrame()
 author_pos_4['pos'] = pos_4_grams_dataset
 author_pos_4['author'] = labels
-author_pos_4.to_csv('datasets/pos_4_verb_30.csv', index=False)
+author_pos_4.to_csv('datasets/pos_4_30.csv', index=False)
 
 pos_5_grams_dataset = []
 for text in combined:
     parsed_text = split_text(text)
     lemmatized_text = lemmatize(parsed_text, morph)
     n_gram_text = generate_n_grams(lemmatized_text, 5)
-    uni_pos_text = generate_verb_unigrams_from_n_grams(n_gram_text, morph)
+    uni_pos_text = generate_pos_unigrams_from_n_grams(n_gram_text, morph)
     pos_n_grams_text = get_pos_n_grams_string(uni_pos_text)
     pos_5_grams_dataset.append(pos_n_grams_text)
 author_pos_5 = pd.DataFrame()
 author_pos_5['pos'] = pos_5_grams_dataset
 author_pos_5['author'] = labels
-author_pos_5.to_csv('datasets/pos_5_verb_30.csv', index=False)
+author_pos_5.to_csv('datasets/pos_5_30.csv', index=False)
 
 pos_6_grams_dataset = []
 for text in combined:
     parsed_text = split_text(text)
     lemmatized_text = lemmatize(parsed_text, morph)
     n_gram_text = generate_n_grams(lemmatized_text, 6)
-    uni_pos_text = generate_verb_unigrams_from_n_grams(n_gram_text, morph)
+    uni_pos_text = generate_pos_unigrams_from_n_grams(n_gram_text, morph)
     pos_n_grams_text = get_pos_n_grams_string(uni_pos_text)
     pos_6_grams_dataset.append(pos_n_grams_text)
 author_pos_6 = pd.DataFrame()
 author_pos_6['pos'] = pos_6_grams_dataset
 author_pos_6['author'] = labels
-author_pos_6.to_csv('datasets/pos_6_verb_30.csv', index=False)
+author_pos_6.to_csv('datasets/pos_6_30.csv', index=False)
 
