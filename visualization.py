@@ -10,31 +10,31 @@ def experiment1():
     f = []
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score2)
     test.append(test_score2)
     f.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score3)
     test.append(test_score3)
     f.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score4)
     test.append(test_score4)
     f.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score5)
     test.append(test_score5)
     f.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score6)
     test.append(test_score6)
     f.append(f6)
@@ -69,31 +69,31 @@ def experiment2():
     f_stop = []
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score2)
     test.append(test_score2)
     f.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score3)
     test.append(test_score3)
     f.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score4)
     test.append(test_score4)
     f.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score5)
     test.append(test_score5)
     f.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score6)
     test.append(test_score6)
     f.append(f6)
@@ -101,31 +101,31 @@ def experiment2():
     ######################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_stop_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_stop.append(train_score2)
     test_stop.append(test_score2)
     f_stop.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_stop_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_stop.append(train_score3)
     test_stop.append(test_score3)
     f_stop.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_stop_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_stop.append(train_score4)
     test_stop.append(test_score4)
     f_stop.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_stop_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_stop.append(train_score5)
     test_stop.append(test_score5)
     f_stop.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_stop_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_stop.append(train_score6)
     test_stop.append(test_score6)
     f_stop.append(f6)
@@ -147,12 +147,11 @@ def experiment2():
     plt.grid()
     plt.show()
 
-    line5, = plt.plot(n, f, label='Выборка со стоп-словами')
-    line6, = plt.plot(n, f_stop, label='Выборка без стоп-слов')
-    plt.plot(n, f)
+    line1, = plt.plot(n, f, label='Выборка со стоп-словами')
+    line2, = plt.plot(n, f_stop, label='Выборка без стоп-слов')
     plt.xlabel('N')
     plt.ylabel('F-мера')
-    plt.legend(handles=[line5, line6])
+    plt.legend(handles=[line1, line2])
     plt.grid()
     plt.show()
 
@@ -168,31 +167,31 @@ def experiment3():
     f_verb = []
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score2)
     test.append(test_score2)
     f.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score3)
     test.append(test_score3)
     f.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score4)
     test.append(test_score4)
     f.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score5)
     test.append(test_score5)
     f.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train.append(train_score6)
     test.append(test_score6)
     f.append(f6)
@@ -200,31 +199,31 @@ def experiment3():
     ######################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_verb_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_verb.append(train_score2)
     test_verb.append(test_score2)
     f_verb.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_verb_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_verb.append(train_score3)
     test_verb.append(test_score3)
     f_verb.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_verb_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_verb.append(train_score4)
     test_verb.append(test_score4)
     f_verb.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_verb_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_verb.append(train_score5)
     test_verb.append(test_score5)
     f_verb.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_verb_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test)
     train_verb.append(train_score6)
     test_verb.append(test_score6)
     f_verb.append(f6)
@@ -248,7 +247,6 @@ def experiment3():
 
     line5, = plt.plot(n, f, label='Выборка с инфинитивами')
     line6, = plt.plot(n, f_verb, label='Выборка без инфинитивов')
-    plt.plot(n, f)
     plt.xlabel('N')
     plt.ylabel('F-мера')
     plt.legend(handles=[line5, line6])
@@ -258,121 +256,112 @@ def experiment3():
 
 def experiment41():
     n = [2, 3, 4, 5, 6]
-    train_lin = []
 
     train_lin = []
-    test_lin = []
-    f_lin = []
 
     train_poly = []
-    test_poly = []
-    f_poly = []
 
     train_rbf = []
-    test_rbf = []
-    f_rbf = []
 
     train_sig = []
-    test_sig = []
-    f_sig = []
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     train_lin.append(train_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     train_lin.append(train_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     train_lin.append(train_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     train_lin.append(train_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     train_lin.append(train_score6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     train_poly.append(train_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     train_poly.append(train_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     train_poly.append(train_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     train_poly.append(train_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'poly')
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'poly')
     train_poly.append(train_score6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     train_rbf.append(train_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     train_rbf.append(train_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     train_rbf.append(train_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     train_rbf.append(train_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     train_rbf.append(train_score6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     train_sig.append(train_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     train_sig.append(train_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     train_sig.append(train_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     train_sig.append(train_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     train_sig.append(train_score6)
 
@@ -389,121 +378,112 @@ def experiment41():
 
 def experiment42():
     n = [2, 3, 4, 5, 6]
-    train_lin = []
 
-    train_lin = []
     test_lin = []
-    f_lin = []
 
-    train_poly = []
     test_poly = []
-    f_poly = []
 
-    train_rbf = []
     test_rbf = []
-    f_rbf = []
 
-    train_sig = []
     test_sig = []
-    f_sig = []
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     test_lin.append(test_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     test_lin.append(test_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     test_lin.append(test_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     test_lin.append(test_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     test_lin.append(test_score6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     test_poly.append(test_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     test_poly.append(test_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     test_poly.append(test_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     test_poly.append(test_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'poly')
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'poly')
     test_poly.append(test_score6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     test_rbf.append(test_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     test_rbf.append(test_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     test_rbf.append(test_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     test_rbf.append(test_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     test_rbf.append(test_score6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     test_sig.append(test_score2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     test_sig.append(test_score3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     test_sig.append(test_score4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     test_sig.append(test_score5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     test_sig.append(test_score6)
 
@@ -520,117 +500,112 @@ def experiment42():
 
 def experiment43():
     n = [2, 3, 4, 5, 6]
-    train_lin = []
 
-    train_lin = []
     f_lin = []
 
-    train_poly = []
     f_poly = []
 
-    train_rbf = []
     f_rbf = []
 
-    train_sig = []
     f_sig = []
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     f_lin.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     f_lin.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     f_lin.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     f_lin.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'linear')
     f_lin.append(f6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     f_poly.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     f_poly.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     f_poly.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'poly')
     f_poly.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'poly')
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test, 'poly')
     f_poly.append(f6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     f_rbf.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     f_rbf.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     f_rbf.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     f_rbf.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'rbf')
     f_rbf.append(f6)
 
     ###########################################
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_2_30.csv')
-    train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score2, test_score2, f2 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     f_sig.append(f2)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_3_30.csv')
-    train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score3, test_score3, f3 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     f_sig.append(f3)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_4_30.csv')
-    train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score4, test_score4, f4 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     f_sig.append(f4)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_5_30.csv')
-    train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score5, test_score5, f5 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     f_sig.append(f5)
 
     pos_text_train, pos_text_test, pos_author_train, pos_author_test = get_train_data('datasets/pos_6_30.csv')
-    train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
+    clf_svc, tfidf_vect, train_score6, test_score6, f6 = svm_classification(pos_text_train, pos_text_test, pos_author_train, pos_author_test,
                                                        'sigmoid')
     f_sig.append(f6)
 
@@ -646,7 +621,7 @@ def experiment43():
 
 
 def main():
-    experiment43()
+    experiment3()
 
 
 if __name__ == '__main__':
