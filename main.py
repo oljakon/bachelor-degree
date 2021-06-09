@@ -108,7 +108,8 @@ class MainWindow(QMainWindow):
         # test_score = clf_svc.score(x_test, pos_author_test)
         # for doc, category in zip(pos_author_test, pred):
         #     print('%r => %s' % (doc, category))
-        self.author.setText(author_pred + ' ' + proba)
+        # self.author.setText(author_pred + ' ' + proba)
+        self.author.setText(author_pred)
 
     @pyqtSlot(name='on_classify_clicked')
     def classification(self):
